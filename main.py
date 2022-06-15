@@ -1,5 +1,7 @@
+from integrator import Integrator
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 
 def x(k):
@@ -16,11 +18,25 @@ def control_loop(sampling_time=0.01, Tf=20):
     K = []
     for k in np.arange(0, Tf, sampling_time):
         K.append(k)
-        x_points.append(x(k))
+        x_points.append(math.sin(k))
         y_points.append(y(k))
 
     plt.plot(K, list(zip(y_points, x_points)))
     plt.show()
 
 
-control_loop()
+# control_loop()
+
+Tf = 100
+Ts = 0.01
+y_points = []
+x_points = []
+I = Integrator(Ts)
+for x in np.arange(0, Tf, Ts):
+    x_points.append(x)
+    y_dash = x + 4
+    I.input(y_dash)
+    y = I.output()
+    y_points.append(y)
+plt.plot(x_points, y_points)
+plt.show()
