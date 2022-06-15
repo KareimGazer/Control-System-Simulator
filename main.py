@@ -1,3 +1,4 @@
+from differentiator import Differentiator
 from integrator import Integrator
 import numpy as np
 import matplotlib.pyplot as plt
@@ -34,9 +35,24 @@ x_points = []
 I = Integrator(Ts)
 for x in np.arange(0, Tf, Ts):
     x_points.append(x)
-    y_dash = x + 4
+    y_dash = math.sin(x)
     I.input(y_dash)
     y = I.output()
     y_points.append(y)
 plt.plot(x_points, y_points)
 plt.show()
+
+
+# Tf = 100
+# Ts = 0.01
+# y_dash_points = []
+# x_points = []
+# D = Differentiator(Ts)
+# for x in np.arange(0, Tf, Ts):
+#     x_points.append(x)
+#     y = x + 4
+#     D.input(y)
+#     y_dash = D.output()
+#     y_dash_points.append(y_dash)
+# plt.plot(x_points, y_dash_points)
+# plt.show()
