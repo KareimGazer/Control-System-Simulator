@@ -3,7 +3,7 @@ import numpy as np
 
 class DeadTime():
     def __init__(self, sampling_time, delay_time):
-        self.size = delay_time // sampling_time
+        self.size = int(delay_time / sampling_time)
         self.buffer = np.zeros(self.size)
         self.p_in = 0
         self.p_out = 0
